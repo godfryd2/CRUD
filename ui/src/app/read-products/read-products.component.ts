@@ -12,6 +12,8 @@ import { Product } from '../product';
  
 export class ReadProductsComponent implements OnInit {
  
+    @Output() show_create_product_event=new EventEmitter();
+    
     // store list of products
     products: Product[];
  
@@ -19,7 +21,15 @@ export class ReadProductsComponent implements OnInit {
     constructor(private productService: ProductService){}
  
     // methods that we will use later
-    createProduct(){}
+
+    // when user clicks the 'create' button
+    createProduct(){
+        // tell the parent component (AppComponent)
+        this.show_create_product_event.emit({
+            title: "Create Product"
+        });
+    }
+    
     readOneProduct(id){}
     updateProduct(id){}
     deleteProduct(id){}

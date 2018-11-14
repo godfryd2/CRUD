@@ -21,4 +21,19 @@ export class ProductService {
             .pipe(map((res: Response) => res.json()));
     }
  
+    // Send product data to remote server to create it.
+    createProduct(product): Observable<Product>{
+    
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+    
+        console.log("product: ", product);
+        
+        return this._http.post(
+            "http://godfryd21.unixstorm.org/api/product/create.php",
+            product,
+            options
+        ).pipe(map((res: Response) => res.json()));
+
+    }
 }

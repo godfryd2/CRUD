@@ -1,17 +1,29 @@
 <!-- container -->
 <div class="container">
  
-  <!-- show page header -->
-  <div class="row">
-      <div class="col-md-12">
-          <div class='page-header'><h1>{{title}}</h1></div>
-      </div>
-  </div>
+    <!-- show page header -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class='page-header'><h1>{{title}}</h1></div>
+        </div>
+    </div>
 
-  <!-- Show this view if "show_read_products_html" property of AppComponent is true. -->
-  <app-read-products
-      *ngIf="show_read_products_html">
-  </app-read-products>
+    <!-- Show this view if "show_read_products_html" property of AppComponent is true. -->
+    <app-read-products
+        *ngIf="show_read_products_html"
+        (show_create_product_event)="showCreateProduct($event)">
+    </app-read-products>
+
+    <!--
+        * Show this view if "show_create_product_html" is true.
+    
+        * If (show_read_products_event) was emitted in CreateProductComponent,
+        trigger showReadProducts() method in AppComponent.
+    -->
+    <app-create-product
+        *ngIf="show_create_product_html"
+        (show_read_products_event)="showReadProducts($event)">
+    </app-create-product>
 
 </div>
 <!-- /container -->
