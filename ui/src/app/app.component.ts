@@ -47,4 +47,16 @@ export class AppComponent {
         this.show_update_product_html=false;
         this.show_delete_product_html=false;
     }
+
+    // show details of a product
+    showReadOneProduct($event){
+    
+        // set title and product ID
+        this.title=$event.title;
+        this.product_id=$event.product_id;
+    
+        // hide all html then show only one html
+        this.hideAll_Html();
+        this.show_read_one_product_html=true;
+    }
 }

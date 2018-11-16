@@ -32,7 +32,7 @@ export class CreateProductComponent {
         formBuilder: FormBuilder
     ){
         // based on our html form, build our angular form
-        this.create_product_form = formBuilder.group({
+        let product = this.create_product_form = formBuilder.group({
             name: ["", Validators.required],
             price: ["", Validators.required],
             description: ["", Validators.required],
@@ -48,8 +48,8 @@ export class CreateProductComponent {
             .subscribe(
                  product => {
                     // show an alert to tell the user if product was created or not
-                    console.log(product);
- 
+                    console.log(product)
+
                     // go back to list of products
                     this.readProducts();
                  },

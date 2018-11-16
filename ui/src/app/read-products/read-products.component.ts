@@ -12,7 +12,14 @@ import { Product } from '../product';
  
 export class ReadProductsComponent implements OnInit {
  
+    /*
+    * Needed to notify the 'consumer of this component', which is the 'AppComponent',
+      that an 'event' happened in this component.
+    */
     @Output() show_create_product_event=new EventEmitter();
+    @Output() show_read_one_product_event=new EventEmitter();
+    @Output() show_update_product_event=new EventEmitter();
+    @Output() show_delete_product_event=new EventEmitter();
     
     // store list of products
     products: Product[];
@@ -30,7 +37,16 @@ export class ReadProductsComponent implements OnInit {
         });
     }
     
-    readOneProduct(id){}
+    // when user clicks the 'read' button
+    readOneProduct(id){
+        console.log('rp comp readOneProduct');
+        // tell the parent component (AppComponent)
+        this.show_read_one_product_event.emit({
+            product_id: id,
+            title: "Read One Product"
+        });
+    }
+    
     updateProduct(id){}
     deleteProduct(id){}
  
