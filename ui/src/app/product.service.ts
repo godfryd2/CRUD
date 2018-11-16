@@ -65,8 +65,21 @@ export class ProductService {
         let options = new RequestOptions({ headers: headers });
     
         return this._http.post(
-            "http://godfryd21.unixstorm.org/api/api/product/update.php",
+            "http://godfryd21.unixstorm.org/api/product/update.php",
             product,
+            options
+        ).pipe(map((res: Response) => res.json()));
+    }
+
+    // Send product ID to remote server to delete it.
+    deleteProduct(product_id){
+    
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+    
+        return this._http.post(
+            "http://godfryd21.unixstorm.org/api/product/delete.php",
+            { id: product_id },
             options
         ).pipe(map((res: Response) => res.json()));
     }
