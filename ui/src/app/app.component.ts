@@ -59,4 +59,16 @@ export class AppComponent {
         this.hideAll_Html();
         this.show_read_one_product_html=true;
     }
+
+    // show the 'update product form'
+    showUpdateProduct($event){
+    
+        // set title and product ID
+        this.title=$event.title;
+        this.product_id=$event.product_id;
+    
+        // hide all html then show only one html
+        this.hideAll_Html();
+        this.show_update_product_html=true;
+    }
 }
